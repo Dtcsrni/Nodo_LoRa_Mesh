@@ -1,5 +1,8 @@
 /***************************************************************
-* Variables globales (no utilizadas en prueba #1)
+* Variables globales
 ****************************************************************/
 
-// Reservado para pruebas futuras
+String nombreUsuario = "Renato";
+String idVehiculo = "CYB-001";
+
+#define ST7735_DARKGREY 0x7BEF

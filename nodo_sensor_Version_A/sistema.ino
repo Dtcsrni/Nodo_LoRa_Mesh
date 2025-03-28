@@ -1,19 +1,47 @@
 /***************************************************************
-* Función: mostrarLogoInicio()
-* Descripción: Muestra el logo del sistema y mensaje de arranque
+* Función: mostrarSplashCompleto()
+* Descripción: Muestra el splash completo, barra de POST y encabezado
 ****************************************************************/
 
-void mostrarLogoInicio() {
+void mostrarSplashCompleto() {
   tft.st7735_fill_screen(ST7735_BLACK);
+
+  // Título superior
+  tft.st7735_write_str((ST7735_WIDTH - 8 * strlen(MENSAJE_CYBERSYS)) / 2,
+                       2, MENSAJE_CYBERSYS, Font_7x10, ST7735_CYAN, ST7735_BLACK);
+
+  // Logo más abajo para dar espacio al título
   int x = (ST7735_WIDTH - 96) / 2;
-  int y = (ST7735_HEIGHT - 96) / 2 - 10;
+  int y = 20;
   tft.st7735_draw_image(x, y, 96, 96, (const uint16_t*)logo_bitmap);
 
-  tft.st7735_write_str((ST7735_WIDTH - 9 * 8) / 2, y + 96 + 6,
-                       MENSAJE_CYBERSYS, Font_7x10, ST7735_CYAN, ST7735_BLACK);
-  
-  delay(500);
+  // Mensajes POST compatibles con Font_7x10
+  const char* pasos[] = {
+    MENSAJE_POST_1,
+    MENSAJE_POST_2,
+    MENSAJE_POST_3,
+    MENSAJE_POST_4,
+    MENSAJE_POST_5,
+    MENSAJE_LISTO
+  };
 
-  tft.st7735_write_str(5, 150, MENSAJE_SISTEMA_LISTO,
-                       Font_7x10, ST7735_GREEN, ST7735_BLACK);
+  int numPasos = sizeof(pasos) / sizeof(pasos[0]);
+  int yInicio = y + 96 + 4;  // debajo del logo
+
+  for (int i = 0; i < numPasos && (yInicio + i * 11) < ST7735_HEIGHT - 14; i++) {
+    String msg(pasos[i]);
+    if (msg.length() > 22) msg = msg.substring(0, 22);  // truncar
+
+    tft.st7735_write_str(2, yInicio + i * 11, msg.c_str(), Font_7x10, ST7735_WHITE, ST7735_BLACK);
+    delay(300);
+    yield();
+  }
+
+  // Copyright
+  tft.st7735_write_str(2, ST7735_HEIGHT - 10, "Copyright 2025 ERVC", Font_7x10, ST7735_DARKGREY, ST7735_BLACK);
+  delay(1200);
+
+  // Limpieza total antes del dashboard
+  tft.st7735_fill_screen(ST7735_BLACK);
+  dibujarEncabezadoUsuario();
 }

@@ -10,18 +10,19 @@
 #include "mensajes_es.h"
 #include "logo_bitmap_96x96.c"
 
+
 HT_st7735 tft;
 
-extern void mostrarLogoInicio();
+extern void mostrarSplashCompleto();
 extern void ejecutarPruebas();
 
 void setup() {
   Serial.begin(115200);
   delay(300);
   tft.st7735_init();
-  ejecutarPruebas();  // Punto de entrada al testing TDD
+  ejecutarPruebas(); // Punto de entrada a pruebas TDD
 }
 
 void loop() {
-  vTaskDelete(NULL); // No se usa
+  vTaskDelete(NULL); // No usado en pruebas
 }
