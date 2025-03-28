@@ -12,7 +12,7 @@ Este repositorio contiene el firmware, scripts, configuraciones y documentación
 
 **"Implementación de un Nodo IoT con LoRa Mesh para el Monitoreo de Flotas Móviles en Entornos Controlados"**  
 Maestría en Internet de las Cosas, UAEH  
-Autor: **I.S.C. Erick Renato Vega Cerón**  
+Autor: **I.S.C. Erick Renato Vega Ceron**  
 Universidad Autónoma del Estado de Hidalgo  
 Año: 2025
 
