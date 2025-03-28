@@ -1,5 +1,32 @@
-// Sketch optimizado con FreeRTOS para Nodo A - Heltec V3 + ST7735
-// Estructura modular con código limpio, eficiente y mantenible
+/***************************************************************
+* Proyecto: Nodo IoT con LoRa Mesh para Monitoreo de Flotas Móviles
+* Autor: I.S.C. Erick Renato Vega Cerón
+* Tesis de Maestría en Internet de las Cosas – UAEH
+* Universidad Autónoma del Estado de Hidalgo – 2025
+*
+* Archivo: nodo_sensor_Version_A.ino
+* Versión: 0.1
+* Fecha: Marzo/2025
+*
+* Descripción:
+* Este archivo forma parte del sistema embebido que integra sensores,
+* comunicación LoRa Mesh híbrida, gestión energética, visualización en
+* pantalla TFT y transmisión remota para monitoreo de vehículos en tiempo real.
+*
+* Licenciamiento:
+* Este código está licenciado bajo los términos de la GNU Affero General Public License v3.0 (AGPLv3).
+* - Se prohíbe su uso comercial sin autorización expresa.
+* - Cualquier modificación o redistribución debe mantener esta misma licencia.
+* - El código fuente derivado debe ser publicado si se utiliza incluso mediante red (SaaS).
+*
+* Para más detalles, consulte el archivo LICENSE o visite:
+* https://www.gnu.org/licenses/agpl-3.0.html
+*
+* Contacto del autor:
+* armsystechno@gmail.com
+*
+* © 2025 Erick Renato Vega Ceron – Todos los derechos reservados
+****************************************************************/
 
 #include "HT_st7735.h"
 #include "Arduino.h"
