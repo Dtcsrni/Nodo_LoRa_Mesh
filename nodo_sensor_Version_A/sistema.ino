@@ -1,21 +1,25 @@
+#include "variables_globales.h"
+#include "mensajes_es.h"
+#include "logo_bitmap.h"
+
 /***************************************************************
 * Función: mostrarSplashCompleto()
-* Descripción: Muestra el splash completo, barra de POST y encabezado
+* Descripción: Muestra el splash completo con título, logo,
+* mensajes tipo POST, copyright y limpieza final.
 ****************************************************************/
-
 void mostrarSplashCompleto() {
   tft.st7735_fill_screen(ST7735_BLACK);
 
-  // Título superior
+  // Título centrado arriba
   tft.st7735_write_str((ST7735_WIDTH - 8 * strlen(MENSAJE_CYBERSYS)) / 2,
                        2, MENSAJE_CYBERSYS, Font_7x10, ST7735_CYAN, ST7735_BLACK);
 
-  // Logo más abajo para dar espacio al título
+  // Logo centrado más abajo
   int x = (ST7735_WIDTH - 96) / 2;
   int y = 20;
   tft.st7735_draw_image(x, y, 96, 96, (const uint16_t*)logo_bitmap);
 
-  // Mensajes POST compatibles con Font_7x10
+  // Mensajes estilo POST
   const char* pasos[] = {
     MENSAJE_POST_1,
     MENSAJE_POST_2,
@@ -26,7 +30,7 @@ void mostrarSplashCompleto() {
   };
 
   int numPasos = sizeof(pasos) / sizeof(pasos[0]);
-  int yInicio = y + 96 + 4;  // debajo del logo
+  int yInicio = y + 96 + 4;
 
   for (int i = 0; i < numPasos && (yInicio + i * 11) < ST7735_HEIGHT - 14; i++) {
     String msg(pasos[i]);
@@ -37,11 +41,11 @@ void mostrarSplashCompleto() {
     yield();
   }
 
-  // Copyright
-  tft.st7735_write_str(2, ST7735_HEIGHT - 10, "Copyright 2025 ERVC", Font_7x10, ST7735_DARKGREY, ST7735_BLACK);
+  // Mensaje de copyright
+  tft.st7735_write_str(2, ST7735_HEIGHT - 10, MENSAJE_COPYRIGHT, Font_7x10, ST7735_DARKGREY, ST7735_BLACK);
   delay(1200);
 
-  // Limpieza total antes del dashboard
+  // Limpieza antes del dashboard
   tft.st7735_fill_screen(ST7735_BLACK);
   dibujarEncabezadoUsuario();
 }
